@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css"/>
+<link rel="stylesheet" type="text/css" href="../../css/oaUtil.css"/> 
+<script type="text/javascript" src="../../js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../../lhgdialog/lhgcore.min.js"></script>
+<script type="text/javascript" src="../../lhgdialog/lhgdialog.min.js"></script>
+<script type="text/javascript" src="../../js/oaUtil.js"></script>
+<script type="text/javascript">
+
+var DG = frameElement.lhgDG;
+J(function(){	 
+// 	 DG.addBtn( 'add', '确定', add );
+	 queryByIdone('queryByIdRole.action');
+   
+});
+
+</script>
+<style type="text/css">
+table{ background:#96cbe6; font-family:"宋体"; font-size:13px;}
+table td{ background:#FFF; padding:5px 10px; text-align:left;}
+</style>
+
+<title>公司详情</title>
+</head>
+
+<body>
+<form id="userForm" method="post" style="margin: 10;text-align: center;">
+<table border="0" cellpadding="0" cellspacing="1" width="100%">
+
+<input type="hidden" jsn="id" name="dp.id"/>
+	<tr>
+		<td width="90">角色名称</td>
+		<td ><input type="text" jsn="name" name="lo.name"></input></td>
+	</tr>
+	<tr>
+		<td>是否禁用</td>
+		<td>
+		<input type="text" jsn="roleIsforbitten" name="lo.roleIsforbitten"></input></td>
+			
+	</tr>
+	<tr>
+		<td>角色说明</td>
+        <td> <textarea  jsn="roleDeclare" name="lo.roleDeclare" style="width:95%;" rows="6" ></textarea></td>
+	</tr>
+
+	<tr>
+		<td>备注</td>
+        <td> <textarea jsn="remark" name="lo.remark" style="width:95%;" rows="6" ></textarea></td>
+	</tr>
+
+	
+</table>
+<!-- <div jsn="content" ></div> -->
+<p id="ic"></p>
+</form>
+</body>
+</html>

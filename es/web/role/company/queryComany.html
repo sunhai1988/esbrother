@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>公司列表</title>
+<link rel="stylesheet" type="text/css"
+	href="../../themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../css/ui-lightness/jquery-ui-1.8.11.custom.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../css/search_client.css" />
+<script type="text/javascript" src="../../js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../../lhgdialog/lhgdialog.min.js"></script>
+<script type="text/javascript" src="../../js/oaUtil.js"></script>
+<script type="text/javascript" src="../../js/tool.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var toolbar = [
+				{
+					id : 'btnadd',
+					text : '添加',
+					iconCls : 'icon-add',
+					url : 'role/company/addCompany.html',
+					handler : function() {
+						add('添加公司', '520', '860',
+								'role/company/addCompany.html');
+					}
+				},
+				'-',
+				{
+					id : 'btnedit',
+					text : '修改',
+					iconCls : 'icon-update',
+					url : 'role/company/updateCompany.html',
+					handler : function() {
+						update('test', '修改公司', '520', '860',
+								'role/company/updateCompany.html');
+					}
+				},
+				'-',
+				{
+					id : 'btnok',
+					text : '详细',
+					iconCls : 'icon-detail',
+					url : 'role/company/detailCompany.html',
+					handler : function() {
+						update('test', '公司详细信息', '520', '860',
+								'role/company/detailCompany.html');
+					}
+				},
+				'-',
+				{
+					id : 'btnsave',
+					text : '行业模版菜单',
+					iconCls : 'icon-yhz',
+					url : 'role/company/updateCompanyMenu.html',
+					handler : function() {
+						bntemplate('test', '行业模版菜单', '550', '520',
+								'role/company/updateCompanyMenu.html');
+					}
+				}, '-', {
+					id : 'btnremove',
+					text : '删除',
+					iconCls : 'icon-del',
+					url : 'deleteCompany.action',
+					handler : function() {
+						deleterow('test', 'deleteCompany.action');
+					}
+				}, '-', {
+					id : 'btnreload',
+					text : '全部',
+					iconCls : 'icon-all',
+					handler : function() {
+						searchUser_client_all('test', 'queryForm');
+					}
+				} ];
+		$('#test').datagrid(
+				{
+					title : '所有公司列表',
+					iconCls : 'icon-save',
+					loadMsg : "数据加载中，请稍后...",
+					nowrap : false,
+					striped : false,
+					collapsible : true,
+					url : 'queryCompany.action',
+					singleSelect : false,
+					sortName : 'id',
+					queryParams : {},
+					sortOrder : 'desc',
+					remoteSort : false,
+					pageSize : 10,
+					pageList : [ 5, 10, 20, 30, 40 ],
+					idField : 'id',
+					frozenColumns : [ [ {
+						field : 'ck',
+						checkbox : true
+					} ] ],
+					columns : [ [ {
+						field : 'id',
+						title : 'id',
+						width : 0
+					}, {
+						field : 'company_name',
+						title : '单位名称',
+						width : fillsize(0.2)
+					}, {
+						field : 'chargeer',
+						title : '负责人姓名',
+						width : 80
+					}, {
+						field : 'phone',
+						title : '电话',
+						width : 80
+					}, {
+						field : 'type',
+						title : '公司类别',
+						width : 80
+					}, {
+						field : 'zip',
+						title : '邮编',
+						width : 80
+					} ] ],
+					pagination : true,
+					rownumbers : true,
+					toolbar : toolbar
+				});
+		displayMsg('test');
+		$('#test').datagrid('hideColumn', 'id');
+		removeToolbarItemListbt("#test", toolbar);
+	});
+</script>
+
+<style>
+.right {
+	width: 387px;
+	border: #9fbfe9 solid 1px;
+	padding-bottom: 10px;
+}
+
+.top {
+	height: 18px;
+	border-bottom: #9fbfe9 solid 1px;
+	background: url(images/right_03.jpg) repeat-x;
+	color: #FFF;
+	font-size: 14px;
+	padding-top: 7px;
+	padding-left: 10px;
+}
+
+.con {
+	padding: 15px 10px;
+}
+
+.con_top {
+	height: 13px;
+	cursor: pointer;
+}
+
+.con_main {
+	height: 384px;
+	OVERFLOW: hidden;
+	margin: 10px 0px;
+	font-size: 12px;
+}
+
+.xx {
+	padding-bottom: 10px;
+}
+
+.m_15 table {
+	background: #96cbe6;
+	font-family: "宋体";
+	font-size: 13px;
+}
+
+.m_15 table td {
+	background: #FFF;
+	padding: 5px 10px;
+	text-align: left;
+}
+
+.m_15 table input {
+	width: 150px;
+	border: #a0bad2 solid 1px;
+}
+
+.m_15 {
+	margin: 5px;
+}
+
+.m_15 .top {
+	background: #67cafd;
+	color: #FFF;
+	font-size: 12px;
+	font-weight: 700;
+	padding-left: 10px;
+}
+</style>
+</head>
+
+<body>
+	<input type="hidden" id="czid" />
+	<input type="hidden" id="type" />
+	<div class="bg">
+		<div class="bg_l">
+			<div class="bg_r">
+				<form id="queryForm" style="margin: 0;">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td valign="top" style="padding: 5px 18px;">
+								<div class="i_xun">
+									<div class="i_xun_text">单位名称：</div>
+									<input type="text" name="companyname" />
+								</div>
+								<div class="i_xun">
+									<div class="i_xun_text">负责人姓名：</div>
+									<input type="text" name="chargeer" />
+								</div>
+								<div class="i_xun">
+									<div class="i_xun_text">电话：</div>
+									<input type="text" name="phone" />
+								</div>
+								<div class="i_xun">
+									<div class="i_xun_text">公司类别：</div>
+									<select id="type" name="type">
+										<option value="">请选择</option>
+										<option value="冶金">冶金</option>
+										<option value="化工">化工</option>
+										<option value="楼宇">楼宇</option>
+										<option value="钢铁">钢铁</option>
+									</select>
+								</div>
+								<div class="chaxun">
+									<a href="javascript:searchUser_client('test','queryForm');"><img
+										src="../../images/chaxun.png" /> </a>
+								</div>
+								<div class="chaxun">
+									<a href="javascript:reset_client();"><img
+										src="../../images/reset.png" /> </a>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+	<table id="test"></table>
+</body>
+</html>

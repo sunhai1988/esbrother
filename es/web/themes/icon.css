@@ -1,0 +1,156 @@
+.icon {
+    background: url("icons/tabicons.png") no-repeat scroll 0 0 transparent;
+    display: inline-block;
+    line-height: 18px;
+    width: 18px;
+}
+.icon-blank{
+	background:url('icons/blank.gif') no-repeat;
+}
+.icon-edit{
+	background:url('icons/pencil.png') no-repeat;
+}
+.icon-remove{
+	background:url('icons/edit_remove.png') no-repeat;
+}
+/* .icon-save{ */
+/* 	background:url('icons/filesave.png') no-repeat; */
+/* } */
+.icon-save{
+	background:url('icons/guanli.png') no-repeat;
+}
+.icon-cut{
+	background:url('icons/cut.png') no-repeat;
+}
+.icon-ok{
+	background:url('icons/ok.png') no-repeat;
+}
+.icon-no{
+	background:url('icons/no.png') no-repeat;
+}
+.icon-cancel{
+	background:url('icons/cancel.png') no-repeat;
+}
+.icon-reload{
+	background:url('icons/reload.png') no-repeat;
+}
+.icon-search{
+	background:url('icons/search.png') no-repeat;
+}
+.icon-print{
+	background:url('icons/print.png') no-repeat;
+}
+.icon-help{
+	background:url('icons/help.png') no-repeat;
+}
+.icon-undo{
+	background:url('icons/undo.png') no-repeat;
+}
+.icon-redo{
+	background:url('icons/redo.png') no-repeat;
+}
+.icon-back{
+	background:url('icons/back.png') no-repeat;
+}
+.icon-sum{
+	background:url('icons/sum.png') no-repeat;
+}
+/* 添加 */
+.icon-add{
+	background:url('icons/edit_add.png') no-repeat;
+}
+/* 分配用户组 */
+.icon-yhz{
+	background:url('icons/yonghuz.png') no-repeat;
+}
+/* 修改 */
+.icon-update{
+	background:url('icons/xiugai.png') no-repeat;
+}
+/* 详细 */
+.icon-detail{
+	background:url('icons/xiangx.png') no-repeat;
+}
+/* 删除 */
+.icon-del{
+	background:url('icons/delete.png') no-repeat;
+}
+/* 全部 */
+.icon-all{
+	background:url('icons/quanbu.png') no-repeat;
+}
+/* 下载 */
+.icon-download{
+	background:url('icons/xiazai.png') no-repeat;
+}
+/* 绑定 */
+.icon-bind{
+	background:url('icons/bangding.png') no-repeat;
+}
+/* 设定参数 */
+.icon-setparam{
+	background:url('icons/shedingcs.png') no-repeat;
+}
+/* 导出 */
+.icon-export{
+	background:url('icons/daochu.png') no-repeat;
+}
+/* 运行情况 */
+.icon-runstatus{
+	background:url('icons/yunxingqk.png') no-repeat;
+}
+/* 主页显示 */
+.icon-homepage{
+	background:url('icons/zhuyexs.png') no-repeat;
+}
+/* 回复 */
+.icon-reply{
+	background:url('icons/huifu.png') no-repeat;
+}
+/* 图片分配 */
+.icon-allot{
+	background:url('icons/fenpeitp.png') no-repeat;
+}
+/* 查看 */
+.icon-query{
+	background:url('icons/chakan.png') no-repeat;
+}
+
+.icon-sys {
+    background-position: 0 -200px;
+}
+.icon-set1 {
+    background-position: -380px -200px;
+}
+.icon-add1 {
+    background-position: -20px 0;
+}
+
+.icon-nav {
+    background-position: -100px -20px;
+}
+.icon-users {
+    background-position: -100px -480px;
+}
+.icon-role {
+    background-position: -360px -200px;
+}
+.icon-set {
+    background-position: -380px -200px;
+}
+.icon-log {
+    background-position: -380px -80px;
+}
+
+.icon-delete1 {
+    background-position: -140px -120px;
+}
+.icon-edit1 {
+    background-position: -380px -320px;
+}
+.icon-magic {
+    background-position: 0 -500px;
+}
+.icon-database {
+    background-position: -20px -140px;
+}

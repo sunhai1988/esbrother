@@ -1,0 +1,74 @@
+img {
+	border: 0;
+}
+
+.bg {
+	width: 100%;
+	background: url(../images/s_bg1.jpg) top repeat-x;
+	background-color: #dfe7fe;
+}
+
+.bg_l {
+	width: 100%;
+	background: url(../images/s_bgl.jpg) top left no-repeat;
+}
+
+.bg_r {
+	width: 100%;
+	background: url(../images/s_bgr.jpg) top right no-repeat;
+}
+
+.i_xun {
+	width: 216px;
+	height: 20px;
+	float: left;
+	font-size: 12px;
+	color: #333;
+	padding-top: 10px;
+}
+
+.i_xun_text {
+	float: left;
+	padding-top: 5px;
+}
+
+.i_xun input {
+	float: left;
+	width: 128px;
+}
+
+.i_xun select {
+	float: left;
+	width: 128px;
+}
+
+.i_xun_time {
+	width: 216px;
+	height: 20px;
+	float: left;
+	font-size: 12px;
+	color: #333;
+	padding-top: 10px;
+}
+
+.i_xun_text_time {
+	float: left;
+	padding-top: 5px;
+}
+
+.i_xun_time input {
+	float: left;
+	width: 150px;
+}
+
+.i_xun_time select {
+	float: left;
+	width: 128px;
+}
+
+.chaxun {
+	float: left;
+	padding-top: 8px;
+	height: 25px;
+	padding-right: 15px;
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+	<package name="role" extends="helloWord">
+		<!-- company Action -->
+		<action name="queryCompany" class="com.esbrother.system.action.role.CompanyAction"
+			method="queryCompany">
+		</action>
+		<action name="addCompany" class="com.esbrother.system.action.role.CompanyAction"
+			method="addCompany">
+		</action>
+		<action name="queryByIdCompany" class="com.esbrother.system.action.role.CompanyAction"
+			method="queryByIdAction">
+		</action>
+		<action name="deleteCompany" class="com.esbrother.system.action.role.CompanyAction"
+			method="deleteCompany">
+		</action>
+		<action name="companyQueryMenu" class="com.esbrother.system.action.role.CompanyAction"
+			method="companyQueryMenu">
+
+		</action>
+		<action name="companyQueryMenuOfTrade" class="com.esbrother.system.action.role.CompanyAction"
+			method="companyQueryMenuOfTrade">
+		</action>
+		<action name="addCompanyMenu" class="com.esbrother.system.action.role.CompanyAction"
+			method="addCompanyMenu">
+		</action>
+
+		<!-- Dept Action -->
+		<action name="queryDept" class="com.esbrother.system.action.role.DeptAction"
+			method="queryDept">
+		</action>
+		<action name="savaOrUpdateDept" class="com.esbrother.system.action.role.DeptAction"
+			method="savaOrUpdateDept">
+		</action>
+		<action name="queryByIdDept" class="com.esbrother.system.action.role.DeptAction"
+			method="queryByIdDeptAction">
+		</action>
+		<action name="queryComp" class="com.esbrother.system.action.role.DeptAction"
+			method="queryComp">
+		</action>
+		<action name="deleteDept" class="com.esbrother.system.action.role.DeptAction"
+			method="deleteDept">
+		</action>
+
+		<!-- Master Action -->
+		<action name="queryMaster" class="com.esbrother.system.action.role.MasterAction"
+			method="queryMaster">
+		</action>
+		<action name="saveOrUpdateMaster" class="com.esbrother.system.action.role.MasterAction"
+			method="saveOrUpdateMaster">
+		</action>
+		<!-- Uusers Action -->
+		<action name="queryUUsers" class="com.esbrother.system.action.role.UUsersAction"
+			method="queryUUsers">
+
+		</action>
+		<action name="savaOrUpdateUUsers" class="com.esbrother.system.action.role.UUsersAction"
+			method="savaOrUpdateUUsers">
+		</action>
+
+		<action name="queryByIdMaster" class="com.esbrother.system.action.role.MasterAction"
+			method="queryByIdMaster">
+		</action>
+		<action name="queryTree" class="com.esbrother.system.action.role.MasterAction"
+			method="queryTree">
+		</action>
+
+		<!-- Role Action -->
+		<action name="queryByIdUUsers" class="com.esbrother.system.action.role.UUsersAction"
+			method="queryByIdUUsersAction">
+
+		</action>
+		<action name="queryUser1" class="com.esbrother.system.action.role.UUsersAction"
+			method="queryUser1">
+		</action>
+		<action name="queryUsers1" class="com.esbrother.system.action.role.UUsersAction"
+			method="queryUsers1">
+		</action>
+
+		<action name="queryCompanyByRadio" class="com.esbrother.system.action.role.UUsersAction"
+			method="queryCompanyByRadio">
+		</action>
+		<!-- usersrole Action -->
+		<action name="queryUserRole" class="com.esbrother.system.action.role.UserRoleAction"
+			method="queryUserRole">
+		</action>
+		<action name="savaOrUpdateUserRole" class="com.esbrother.system.action.role.UserRoleAction"
+			method="savaOrUpdateUserRole">
+		</action>
+
+		<!-- usersgroup Action -->
+		<action name="deleteUsersGroup" class="com.esbrother.system.action.role.UsersGroupAction"
+			method="deleteUsersGroup">
+		</action>
+		<action name="queryUsersGroup" class="com.esbrother.system.action.role.UsersGroupAction"
+			method="queryUsersGroup">
+		</action>
+		<action name="addUsersGroup" class="com.esbrother.system.action.role.UsersGroupAction"
+			method="addUsersGroup">
+		</action>
+		<action name="queryByIdUsersGroup" class="com.esbrother.system.action.role.UsersGroupAction"
+			method="queryByIdAction">
+		</action>
+		<action name="queryRG" class="com.esbrother.system.action.role.UsersGroupAction"
+			method="queryRole1">
+		</action>
+
+		<!-- Role Action -->
+		<action name="queryRole" class="com.esbrother.system.action.role.RoleAction"
+			method="queryRole">
+		</action>
+		<action name="RoleAddLimit" class="com.esbrother.system.action.role.RoleAction"
+			method="RoleAddLimit">
+		</action>
+		<action name="RolequeryLimit" class="com.esbrother.system.action.role.RoleAction"
+			method="RolequeryLimit">
+		</action>
+		<action name="addRole" class="com.esbrother.system.action.role.RoleAction"
+			method="addRole">
+		</action>
+		<action name="queryByIdRole" class="com.esbrother.system.action.role.RoleAction"
+			method="queryByIdRole">
+		</action>
+		<action name="queryLimitByRoleId" class="com.esbrother.system.action.role.RoleAction"
+			method="queryLimitByRoleId">
+		</action>
+		<action name="deleteRole" class="com.esbrother.system.action.role.RoleAction"
+			method="deleteRole">
+		</action>
+		<action name="RolequeryByIdLimit" class="com.esbrother.system.action.role.RoleAction"
+			method="RolequeryByIdLimit">
+		</action>
+		<!-- Limit Action -->
+		<action name="queryLimit" class="com.esbrother.system.action.role.LimitAction"
+			method="queryLimit">
+		</action>
+		<action name="addLimit" class="com.esbrother.system.action.role.LimitAction"
+			method="addLimit">
+		</action>
+		<action name="queryByIdLimit" class="com.esbrother.system.action.role.LimitAction"
+			method="queryByIdLimit">
+		</action>
+		<action name="LimitqueryMenu" class="com.esbrother.system.action.role.LimitAction"
+			method="LimitqueryMenu">
+		</action>
+		<action name="LimitAddMenu" class="com.esbrother.system.action.role.LimitAction"
+			method="LimitAddMenu">
+		</action>
+		<action name="deleteLimit" class="com.esbrother.system.action.role.LimitAction"
+			method="deleteLimit">
+		</action>
+
+		<!-- position Action -->
+		<action name="deletePosition" class="com.esbrother.system.action.role.PositionAction"
+			method="deletePosition">
+		</action>
+		<action name="queryPosition1" class="com.esbrother.system.action.role.PositionAction"
+			method="queryPosition1">
+		</action>
+		<action name="addPosition" class="com.esbrother.system.action.role.PositionAction"
+			method="addPosition">
+		</action>
+		<action name="queryByIdPosition" class="com.esbrother.system.action.role.PositionAction"
+			method="queryByIdAction">
+		</action>
+		<action name="queryByPosition" class="com.esbrother.system.action.role.PositionAction"
+			method="queryByPosition">
+		</action>
+		<action name="queryCompany1" class="com.esbrother.system.action.role.PositionAction"
+			method="queryCompany1">
+		</action>
+		<action name="queryEquipCompany" class="com.esbrother.system.action.role.PositionAction"
+			method="queryEquipCompany">
+		</action>
+		<action name="getdluserUsername" class="com.esbrother.system.action.role.LoginAction"
+			method="getdluserUsername"></action>
+
+		<!-- Master -->
+		<action name="deleteMaster" class="com.esbrother.system.action.role.MasterAction"
+			method="deleteMaster"></action>
+
+		<!--companyQuerymobel  -->
+		<action name="companyQuerymobel" class="com.esbrother.system.action.role.CompanyMobelAction"
+			method="companyQuerymobel"></action>
+		<!--companyQuerySelmobel  -->
+		<action name="companyQuerySelmobel" class="com.esbrother.system.action.role.CompanyMobelSelAction"
+			method="companyQuerySelmobel"></action>
+		<!-- companyMobelSave -->
+		<action name="companyMobelSave" class="com.esbrother.system.action.role.CompanyMobelSelAction"
+			method="companyMobelSave"></action>
+
+	</package>
+
+</struts>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="userDao" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.esbrother.system.dao.user.UserDaoImpl">
+				<property name="commonDAO" ref="commonDAO" />
+				<property name="pageDelayTime">
+					<value>20000</value>
+				</property>
+			</bean>
+		</property>
+	</bean>
+<!-- 	<bean id="roleFilter" class="com.esbrother.system.filter.RoleFilter" -->
+<!-- 		factory-method="setUserDao" depends-on="userDao"> -->
+<!-- 		<constructor-arg ref="userDao"></constructor-arg> -->
+<!-- 	</bean> -->
+</beans>

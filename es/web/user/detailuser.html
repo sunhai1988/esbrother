@@ -1,0 +1,109 @@
+<!--详细用户信息-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css"
+	href="../themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css"
+	href="../css/lpsf_form_css.css" />
+<script type="text/javascript" src="../js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../lhgdialog/lhgcore.min.js"></script>
+<script type="text/javascript" src="../lhgdialog/lhgdialog.min.js"></script>
+<script type="text/javascript" src="../js/oaUtil.js"></script>
+<script type="text/javascript">
+	var DG = frameElement.lhgDG;
+	J(function() {
+		downList('queryDepartment.action', 'id', 'dept_name', 'department_id');
+		downList('queryPosition.action', 'id', 'position_name', 'position_id');
+		downList('queryCompany1.action', 'id', 'company_name', 'companyId');
+		queryByIdone('queryByIdUser.action');
+		setDisable();
+	});
+	
+	function setDisable() {
+		var textarea = document.getElementsByTagName("textarea");
+		var input = document.getElementsByTagName("input");
+		var select = document.getElementsByTagName("select");
+		for ( var i = 0; textarea != null && i < textarea.length; i++) {
+			textarea[i].disabled = "disabled";
+		}
+		for ( var i = 0; input != null && i < input.length; i++) {
+			input[i].disabled = "disabled";
+		}
+		for ( var i = 0; select != null && i < select.length; i++) {
+			select[i].disabled = "disabled";
+		}
+	}
+</script>
+</head>
+<body>
+	<form id="userForm" method="post"
+		style="margin: 10; text-align: center;">
+		<table border="0" cellpadding="0" cellspacing="1" width="98%">
+			<input type="hidden" jsn="id" />
+			<input type="hidden" jsn="department_id" />
+			<input type="hidden" jsn="position_id" />
+			<input type="hidden" jsn="companyId" />
+			<tr>
+				<td>类别</td>
+				<td><select jsn="type" name="of.type" disabled>
+						<option value="0">内部用户</option>
+						<option value="1">企业用户</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>单位名称</td>
+				<td><select id="companyId" jsn="companyId" name="of.companyId"
+					onfocus="this.si=this.selectedIndex;"
+					onchange="this.selectedIndex=this.si;"></select></td>
+			</tr>
+			<tr>
+				<td>部门名称</td>
+				<td><select id="department_id" jsn="department_id"
+					name="of.department_id" onfocus="this.si=this.selectedIndex;"
+					onchange="this.selectedIndex=this.si;"></select>
+				</td>
+			</tr>
+			<tr>
+				<td>职务名称</td>
+				<td><select id="position_id" jsn="position_id"
+					name="of.position_id" onfocus="this.si=this.selectedIndex;"
+					onchange="this.selectedIndex=this.si;"></select></td>
+
+			</tr>
+			<td>用户名</td>
+			<td><input type="text" jsn="user_name" name="of.user_name"></input>
+			</td>
+			</tr>
+			<tr>
+				<td>姓名</td>
+				<td><input type="text" jsn="ming" name="of.ming"></input>
+				</td>
+			</tr>
+			<tr>
+				<td>性别</td>
+				<td><input type="text" jsn="user_sex" name="of.user_sex"></input>
+				</td>
+			</tr>
+			<tr>
+				<td>备注</td>
+				<td><textarea jsn="remark" name="of.remark" style="width: 95%;"
+						rows="6"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>禁用</td>
+				<td><select jsn="prohibition" name="of.prohibition" disabled>
+						<option value="1">是</option>
+						<option value="0">否</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+		<p id="ic"></p>
+	</form>
+</body>
+</html>

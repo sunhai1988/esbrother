@@ -1,0 +1,176 @@
+﻿<!--用户信息-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>用户列表</title>
+<link rel="stylesheet" type="text/css"
+	href="../themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+<link rel="stylesheet" type="text/css"
+	href="../css/ui-lightness/jquery-ui-1.8.11.custom.css" />
+<link rel="stylesheet" type="text/css" href="../css/search_client.css" />
+<script type="text/javascript" src="../js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../lhgdialog/lhgdialog.min.js"></script>
+<script type="text/javascript" src="../js/oaUtil.js"></script>
+<script type="text/javascript" src="../js/tool.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var toolbar = [
+				{
+					id : 'btnadd',
+					text : '添加',
+					iconCls : 'icon-add',
+					url : 'user/adduser.html',
+					handler : function() {
+						add('添加用户信息', '520', '880', 'user/adduser.html');
+					}
+				},
+				'-',
+				{
+					id : 'btnadd',
+					text : '分配用户组',
+					iconCls : 'icon-yhz',
+					url : 'user/allotusersgroup.html',
+					handler : function() {
+						update('test', '分配用户组', '500', '600',
+								'user/allotusersgroup.html');
+					}
+				},
+				'-',
+				{
+					id : 'btncut',
+					text : '修改',
+					iconCls : 'icon-update',
+					url : 'user/updateuser.html',
+					handler : function() {
+						update('test', '修改用户信息', '500', '880',
+								'user/updateuser.html');
+					}
+				},
+				'-',
+				{
+					id : 'btnsave',
+					text : '详细',
+					iconCls : 'icon-detail',
+					url : 'user/detailuser.html',
+					handler : function() {
+						update('test', '用户详细信息', '500', '880',
+								'user/detailuser.html');
+					}
+				}, '-', {
+					id : 'btnsave',
+					text : '删除',
+					iconCls : 'icon-del',
+					url : 'deleteUserOne.action',
+					handler : function() {
+						deleterow('test', 'deleteUserOne.action');
+					}
+				}, '-', {
+					id : 'btnsave',
+					text : '全部',
+					iconCls : 'icon-all',
+					handler : function() {
+						searchUser_client_all('test', 'queryForm');
+					}
+				} ];
+		$('#test').datagrid({
+			title : '信息管理',
+			iconCls : 'icon-save',
+			nowrap : false,
+			striped : false,
+			collapsible : true,
+			url : 'queryJzinfo.action',
+			sortName : 'id',
+			queryParams : {},
+			remoteSort : false,
+			pageList : [ 30, 40, 50, 60, 70 ],
+			idField : 'id',
+			frozenColumns : [ [ {
+				field : 'ck',
+				checkbox : true
+			} ]],
+			columns : [ [ {
+				field : 'id',
+				title : 'id',
+				width : 0
+			}, {
+				field : 'title',
+				title : '标题',
+				width : 320
+			}, {
+				field : 'address',
+				title : '地址',
+				width : 220
+			}, {
+				field : 'phone',
+				title : '联系电话',
+				width : 160
+			}, {
+				field : 'qq',
+				title : 'QQ',
+				width : 160
+			}]],
+			pagination : true,
+			rownumbers : true,
+			toolbar : toolbar
+		});
+		displayMsg('test');
+		$('#test').datagrid('hideColumn', 'id');
+		select_List_client('queryPosition.action', 'id', 'position_name',
+				'position_id');
+		select_List_client('queryDepartment.action', 'id', 'dept_name',
+				'department_id');
+		removeToolbarItemListbt("#test", toolbar);
+	});
+</script>
+</head>
+
+<body>
+	<input type="hidden" id="czid" />
+	<div class="bg">
+		<div class="bg_l">
+			<div class="bg_r">
+				<form id="queryForm" style="margin: 0;">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td valign="top" style="padding: 5px 18px;">
+								<div class="i_xun">
+									<div class="i_xun_text">用户名：</div>
+									<input type="text" name="user_name" />
+								</div>
+								<div class="i_xun">
+									<div class="i_xun_text">部门名称：</div>
+									<select id="department_id" name="dept_name"></select>
+								</div>
+								<div class="i_xun">
+									<div class="i_xun_text">职务名称：</div>
+									<select id="position_id" name="position_name"></select>
+								</div>
+								<div class="i_xun">
+									<div class="i_xun_text">性别：</div>
+									<select id="user_sex" name="user_sex">
+										<option value="">请选择</option>
+										<option value="男">男</option>
+										<option value="女">女</option>
+									</select>
+								</div>
+								<div class="chaxun">
+									<a href="javascript:searchUser_client('test','queryForm');"><img
+										src="../images/chaxun.png" /> </a>
+								</div>
+								<div class="chaxun">
+									<a href="javascript:reset_client();"><img
+										src="../images/reset.png" /> </a>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+	<table id="test"></table>
+</body>
+</html>

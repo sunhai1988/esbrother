@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.esbrother.system.entity.role.LpsfUserRole" table="lpsf_user_role">
+<id column="id" name="id" type="string">
+<generator class="uuid.hex"/>
+</id>
+<property column="role_id" length="32" name="roleId" type="string"/>
+<property column="user_group_id" length="32" name="userGroupId" type="string"/>
+</class>
+</hibernate-mapping>

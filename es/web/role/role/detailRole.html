@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css"
+	href="../../themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../css/ui-lightness/jquery.ui.theme.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../css/lpsf_form_css.css" />
+<script type="text/javascript" src="../../js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../../lhgdialog/lhgcore.min.js"></script>
+<script type="text/javascript" src="../../lhgdialog/lhgdialog.min.js"></script>
+<script type="text/javascript" src="../../js/oaUtil.js"></script>
+<script type="text/javascript">
+	var DG = frameElement.lhgDG;
+	J(function() {
+		queryByIdone('queryByIdRole.action');
+	});
+</script>
+</head>
+
+<body>
+	<form id="userForm" name="validateForm1" method="post"
+		style="margin: 10; text-align: center;">
+		<table border="0" cellpadding="0" cellspacing="1" width="98%">
+			<input type="hidden" jsn="id" name="lo.id" />
+			<tr>
+				<td width="90">角色名称</td>
+				<td><input type="text" jsn="name" name="lo.name"></input>
+				</td>
+			</tr>
+			<tr>
+				<td>是否禁用</td>
+				<td><select id="roleIsforbitten" jsn="roleIsforbitten"
+					name="lo.roleIsforbitten">
+						<option>是</option>
+						<option>否</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td>角色说明</td>
+				<td><textarea jsn="roleDeclare" name="lo.roleDeclare"
+						style="width: 95%;" rows="6"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>备注</td>
+				<td><textarea jsn="remark" name="lo.remark" style="width: 95%;"
+						rows="6"></textarea>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{"total":28,"rows":[
+	{"name":"icon-add","textone":"icon-add","des":"一般用于添加之类"},
+	{"name":"icon-update","textone":"icon-updat","des":"一般用于编辑之类"},
+	{"name":"icon-yhz","textone":"icon-yhz","des":"一般用于其他（如用户）"},
+	{"name":"icon-detail","textone":"icon-detail","des":"一般用于详细"},
+	{"name":"icon-del","textone":"icon-del","des":"一般用于删除"},
+	{"name":"icon-download","textone":"icon-download","des":"一般用于下载及其他"},
+	{"name":"icon-bind","textone":"icon-bind","des":"一般用于其他（如设备）"},
+	{"name":"icon-setparam","textone":"icon-setparam","des":"一般用于设置"},
+	{"name":"icon-export","textone":"icon-export","des":"一般用于导出及其他"},
+	{"name":"icon-runstatus","textone":"icon-runstatus","des":"一般用于其他（如设备运行）"},
+	{"name":"icon-homepage","textone":"icon-homepage","des":"一般用于其他（如主页）"},
+	{"name":"icon-reply","textone":"icon-reply","des":"一般用于其他（如回复）"},
+	{"name":"icon-allot","textone":"icon-allot","des":"一般用于其他"},
+	{"name":"icon-query ","textone":"icon-query","des":"一般用于查询"}
+	
+]}
+

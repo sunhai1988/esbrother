@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.esbrother.system.entity.role.LpsfCompany" table="lpsf_company">
+<id column="id" name="id" type="string">
+<generator class="uuid.hex"/>
+</id>
+<property column="company_name" length="200" name="companyName" type="string"/>
+<property column="chargeer" length="64" name="chargeer" type="string"/>
+<property column="company_address" length="200" name="companyAddress" type="string"/>
+<property column="comm_address" length="500" name="commAddress" type="string"/>
+<property column="zip" length="10" name="zip" type="string"/>
+<property column="type" length="255" name="type" type="string"/>
+<property column="phone" length="12" name="phone" type="string"/>
+<property column="remarks" length="500" name="remarks" type="string"/>
+</class>
+</hibernate-mapping>

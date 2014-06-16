@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css"
+	href="../../themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../css/ui-lightness/jquery.ui.theme.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../css/lpsf_form_css.css" />
+<script type="text/javascript" src="../../js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../../lhgdialog/lhgcore.min.js"></script>
+<script type="text/javascript" src="../../lhgdialog/lhgdialog.min.js"></script>
+<script type="text/javascript" src="../../js/oaUtil.js"></script>
+<script src="../../js/vali/formValidator-4.1.1.js"
+	type="text/javascript" charset="UTF-8"></script>
+<script src="../../js/vali/formValidatorRegex.js" type="text/javascript"
+	charset="UTF-8"></script>
+<script type="text/javascript">
+	var DG = frameElement.lhgDG;
+	J(function() {
+		$.formValidator.initConfig({
+			onError : function(msg, obj, errorlist) {
+			},
+			submitAfterAjaxPrompt : '有数据正在异步验证，请稍等...',
+			onShowClass : "",
+			onFocusClass : "",
+			onCorrectClass : ""
+		});
+
+		$("#positionName").formValidator({
+			onShow : "请输入职务名称",
+			onFocus : "至少1个长度",
+			onCorrect : "输入合法"
+		}).inputValidator({
+			min : 1,
+			empty : {
+				leftEmpty : false,
+				rightEmpty : false,
+				emptyError : "两边不能有空符号"
+			},
+			onError : "不能为空,请确认"
+		});
+		DG.addBtn('ok', '确定', add);
+		downList('queryCompany1.action', 'id', 'company_name', 'companyId');
+	});
+	function add() {
+		if ($.formValidator.pageIsValid("1")) {
+			$.post("addPosition.action", $("#userForm").serializeArray(),
+					function(data) {
+						DG.curWin.location.reload();
+					});
+			DG.curWin.location.reload();
+		}
+	}
+</script>
+</head>
+
+<body>
+	<form id="userForm" name="userForm" method="post"
+		style="margin: 10; text-align: center;">
+		<table border="0" cellpadding="0" cellspacing="1" width="98%">
+			<tr>
+				<td width="90">公司名称</td>
+				<td><select id="companyId" name="lp.companyId"></select>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>职务名称</td>
+				<td><input id="positionName" type="text" name="lp.positionName"></input>
+				</td>
+				<td><div id="positionNameTip" style="width: 280px"></div>
+				</td>
+			</tr>
+			<tr>
+				<td>职务描述</td>
+				<td colspan="2"><textarea name="lp.positionDes" style="width: 95%;"
+						rows="6"></textarea></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

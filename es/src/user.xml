@@ -1,0 +1,73 @@
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+	<package name="user" extends="helloWord">
+		<action name="loginAction" class="com.esbrother.system.action.role.LoginAction"
+			method="login"></action>
+		<action name="denglu" class="com.esbrother.system.action.role.LoginAction"
+			method="denglu"></action>
+		<action name="getreporthomepage" class="com.esbrother.system.action.role.LoginAction"
+			method="getReportHomePage"></action>
+		<action name="gethomepageimage" class="com.esbrother.system.action.role.LoginAction"
+			method="getHomePageImage"></action>
+		<action name="getPageDelayTime" class="com.esbrother.system.action.role.LoginAction"
+			method="GetPageDelayTime"></action>
+		<action name="logout" class="com.esbrother.system.action.role.LoginAction"
+			method="logout"></action>
+		<action name="queryUserLog" class="com.esbrother.system.action.role.LoginAction"
+			method="queryUserLog"></action>
+		<action name="queryUserLog_manager" class="com.esbrother.system.action.role.LoginAction"
+			method="queryUserLog_manager"></action>
+		<action name="queryByIdUserRole" class="com.esbrother.system.action.role.UserRoleAction"
+			method="queryByIdUserRoleAction">
+		</action>
+		<action name="queryUsers" class="com.esbrother.system.action.role.UserRoleAction"
+			method="queryUsers">
+		</action>
+		<action name="queryRoleByUser" class="com.esbrother.system.action.role.UserRoleAction"
+			method="queryRole">
+		</action>
+		<action name="replacePass" class="com.esbrother.system.action.role.LoginAction"
+			method="changePass"></action>
+
+		<action name="queryUser" class="com.esbrother.system.action.user.UserAction"
+			method="queryUser">
+		</action>		
+		<action name="addUser" class="com.esbrother.system.action.user.UserAction"
+			method="addUser">
+		</action>
+		<action name="addaUser" class="com.esbrother.system.action.user.UserAction"
+			method="addaUser">
+		</action>
+		<action name="queryByIdUser" class="com.esbrother.system.action.user.UserAction"
+			method="queryByIdAction">
+		</action>
+		<action name="deleteUserOne" class="com.esbrother.system.action.user.UserAction"
+			method="deleteUser">
+		</action>
+		<action name="queryPosition" class="com.esbrother.system.action.user.UserAction"
+			method="queryPosition">
+		</action>
+		<action name="queryDepartment" class="com.esbrother.system.action.user.UserAction"
+			method="queryDepartment">
+		</action>
+		<action name="userIdqueryMenu" class="com.esbrother.system.action.user.UserAction"
+			method="userIdqueryMenu">
+		</action>
+		<action name="buqueryMenu" class="com.esbrother.system.action.user.UserAction"
+			method="buqueryMenu">
+		</action>
+		<action name="btUesrByUserIdPage" class="com.esbrother.system.action.user.UserAction"
+			method="btUesrByUserIdPage">
+		</action>
+		<action name="generateContract" class="com.esbrother.system.action.user.UserAction"
+			method="generateContract">
+			<result name="success" type="stream">
+				<param name="contentType">application/doc; charset=gb2312</param>
+				<param name="inputName">pdfStream</param>
+				<param name="contentDisposition">attachment; filename="ccc.doc"</param>
+				<param name="bufferSize">2048</param>
+			</result>
+		</action>
+	</package>
+</struts>
+

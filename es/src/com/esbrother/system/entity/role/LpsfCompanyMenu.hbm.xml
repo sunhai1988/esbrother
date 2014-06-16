@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.esbrother.system.entity.role.LpsfCompanyMenu" table="lpsf_company_menu">
+<id column="id" name="id" type="string">
+<generator class="uuid.hex"/>
+</id>
+<property column="company_id" length="32" name="companyId" type="string"/>
+<property column="template_id" length="32" name="templateId" type="string"/>
+<property column="url" length="128" name="url" type="string"/>
+<property column="industry_home_id" length="32" name="industryHomeId" type="string"/>
+</class>
+</hibernate-mapping>

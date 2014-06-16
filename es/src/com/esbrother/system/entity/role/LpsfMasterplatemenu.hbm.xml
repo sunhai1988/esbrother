@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.esbrother.system.entity.role.LpsfMasterplatemenu" table="lpsf_masterplatemenu">
+<id column="id" name="id" type="string">
+<generator class="uuid.hex"/>
+</id>
+<property column="masterplate_name" length="64" name="masterplateName" type="string"/>
+<property column="pageURL" length="200" name="pageurl" type="string"/>
+<property column="isSystemMaterplate" length="10" name="issystemmaterplate" type="string"/>
+<property column="limitDeclare" length="200" name="limitdeclare" type="string"/>
+<property column="firstMasterplate" length="200" name="firstmasterplate" type="string"/>
+<property column="sort" length="10" name="sort" type="integer"/>
+<property column="fatherMasterplateCode" length="32" name="fathermasterplatecode" type="string"/>
+<property column="isLimitMasterplate" length="10" name="islimitmasterplate" type="string"/>
+<property column="root_id" length="10" name="rootId" type="integer"/>
+<property column="icon" length="32" name="icon" type="string" />
+<property column="introduction" length="32" name="introduction" type="string" />
+</class>
+</hibernate-mapping>

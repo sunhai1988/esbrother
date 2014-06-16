@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.esbrother.system.entity.role.JzInfo" table="jz_info">
+<id column="id" name="id" type="string">
+<generator class="uuid.hex"/>
+</id>
+<property column="nativeplace" length="255" name="nativeplace" type="string"/>
+<property column="title" length="255" name="title" type="string"/>
+<property column="address" length="255" name="address" type="string"/>
+<property column="resource" length="255" name="resource" type="string"/>
+<property column="grils_num" length="255" name="grils_num" type="string"/>
+<property column="age" length="255" name="age" type="string"/>
+<property column="phone" length="255" name="phone" type="string"/>
+<property column="quality" length="255" name="quality" type="string"/>
+<property column="figure" length="255" name="figure" type="string"/>
+<property column="servicetype" length="255" name="servicetype" type="string"/>
+<property column="price" length="255" name="price" type="string"/>
+<property column="opentime" length="255" name="opentime" type="string"/>
+<property column="livingEnv" length="255" name="livingEnv" type="string"/>
+<property column="safe" length="255" name="safe" type="string"/>
+<property column="note" length="255" name="note" type="string"/>
+<property column="details" length="255" name="details" type="string"/>
+<property column="qq" length="255" name="qq" type="string"/>
+<property column="pics" length="255" name="pics" type="string"/>
+<property column="city" length="4" name="city" type="int"/>
+<property column="province" length="4" name="province" type="int"/>
+</class>
+</hibernate-mapping>

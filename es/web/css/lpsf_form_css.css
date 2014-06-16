@@ -1,0 +1,11 @@
+table {
+	background: #96cbe6;
+	font-family: "宋体";
+	font-size: 13px;
+}
+
+table td {
+	background: #FFF;
+	padding: 5px 10px;
+	text-align: left;
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.esbrother.system.entity.user.LpsfUser" table="lpsf_user">
+<id column="id" name="id" type="java.lang.String">
+<generator class="uuid.hex"/>
+</id>
+<property column="department_id" length="32" name="department_id" type="string"/>
+<property column="position_id" length="32" name="position_id" type="string"/>
+<property column="user_name" length="60" name="user_name" type="string"/>
+<property column="ming" length="60" name="ming" type="string"/>
+<property column="user_pass" length="60" name="user_pass" type="string"/>
+<property column="user_sex" length="10" name="user_sex" type="string"/>
+<property column="remark" length="500" name="remark" type="string"/>
+<property column="prohibition" length="12" name="prohibition" type="string"/>
+<property column="company_id" length="126" name="companyId" type="string"/>
+<property column="type" length="32" name="type" type="string"/>
+</class>
+</hibernate-mapping>

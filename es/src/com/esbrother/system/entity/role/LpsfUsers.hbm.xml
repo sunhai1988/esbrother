@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.esbrother.system.entity.role.LpsfUsers" table="lpsf_users">
+<id column="id" name="id" type="string">
+<generator class="uuid.hex"/>
+</id>
+<property column="users_name" length="200" name="usersName" type="string"/>
+<property column="users_instr" length="500" name="usersInstr" type="string"/>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>角色管理</title>
+<link rel="stylesheet" type="text/css"
+	href="../../themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../css/ui-lightness/jquery-ui-1.8.11.custom.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../css/search_client.css" />
+<script type="text/javascript" src="../../js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../../lhgdialog/lhgdialog.min.js"></script>
+<script type="text/javascript" src="../../js/oaUtil.js"></script>
+<script type="text/javascript" src="../../js/tool.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var toolbar = [
+				{
+					id : 'btnadd',
+					text : '添加',
+					iconCls : 'icon-add',
+					url : 'role/role/addRole.html',
+					handler : function() {
+						add('添加角色', '500', '800', 'role/role/addRole.html');
+					}
+				},
+				'-',
+				{
+					id : 'btncut',
+					text : '修改',
+					iconCls : 'icon-update',
+					url : 'role/role/updateRole.html',
+					handler : function() {
+						update('test', '修改角色', '500', '800',
+								'role/role/updateRole.html');
+					}
+				},
+				'-',
+				{
+					id : 'btnsave',
+					text : '详细',
+					iconCls : 'icon-detail',
+					url : 'role/role/detailRole.html',
+					handler : function() {
+						update('test', '角色详细信息', '500', '800',
+								'role/role/detailRole.html');
+					}
+				},
+				'-',
+				{
+					id : 'btnsave',
+					text : '添加权限',
+					iconCls : 'icon-query',
+					url : 'role/role/updateRoleLimit.html',
+					handler : function() {
+						update('test', '添加权限', '500', '800',
+								'role/role/updateRoleLimit.html');
+					}
+				}, '-', {
+					id : 'btnsave',
+					text : '删除',
+					iconCls : 'icon-del',
+					url : 'deleteRole.action',
+					handler : function() {
+						deleterow('test', 'deleteRole.action');
+					}
+				}, '-', {
+					id : 'btnsave',
+					text : '全部',
+					iconCls : 'icon-all',
+					handler : function() {
+						searchUser_client_all('test', 'queryForm');
+					}
+				} ];
+		$('#test').datagrid({
+			title : '角色管理',
+			iconCls : 'icon-save',
+			nowrap : false,
+			striped : false,
+			collapsible : true,
+			url : 'queryRole.action',
+			sortName : 'id',
+			queryParams : {},
+			sortOrder : 'desc',
+			remoteSort : false,
+			pageList : [ 30, 40, 50, 60, 70 ],
+			idField : 'id',
+			frozenColumns : [ [ {
+				field : 'ck',
+				checkbox : true
+			} ] ],
+			columns : [ [ {
+				field : 'id',
+				title : 'id',
+				width : 0
+			}, {
+				field : 'name',
+				title : '角色名称',
+				width : fillsize(0.27)
+			}, {
+				field : 'role_declare',
+				title : '角色说明',
+				width : fillsize(0.25)
+			}, {
+				field : 'role_isForbitten',
+				title : '是否禁用',
+				width : fillsize(0.25)
+			}, {
+				field : 'remark',
+				title : '备注',
+				width : fillsize(0.25),
+				rowspan : 2,
+				sortable : true,
+				sorter : function(a, b) {
+					return (a > b ? 1 : -1);
+				}
+			} ] ],
+			pagination : true,
+			rownumbers : true,
+			toolbar : toolbar
+		});
+		displayMsg('test');
+		$('#test').datagrid('hideColumn', 'id');
+		removeToolbarItemListbt("#test", toolbar);
+	});
+
+	function hh(ss) {
+		alert('fdsfsdfds');
+	}
+</script>
+</head>
+<body>
+	<input type="hidden" id="czid" />
+	<div class="bg">
+		<div class="bg_l">
+			<div class="bg_r">
+				<form id="queryForm" style="margin: 0;">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td valign="top" style="padding: 5px 18px;">
+								<div class="i_xun">
+									<div class="i_xun_text">角色名称：</div>
+									<input type="text" name="name" />
+								</div>
+								<div class="i_xun">
+									<div class="i_xun_text">角色说明：</div>
+									<input type="text" name="roleDeclare" />
+								</div>
+								<div class="i_xun">
+									<div class="i_xun_text">备注：</div>
+									<input type="text" name="remark" />
+								</div>
+								<div class="i_xun">
+									<div class="i_xun_text">是否禁用：</div>
+									<select id="roleIsforbitten" name="roleIsforbitten">
+										<option value="">请选择</option>
+										<option value="是">是</option>
+										<option value="否">否</option>
+									</select>
+								</div>
+								<div class="chaxun">
+									<a href="javascript:searchUser_client('test','queryForm');"><img
+										src="../../images/chaxun.png" /> </a>
+								</div>
+								<div class="chaxun">
+									<a href="javascript:reset_client();"><img
+										src="../../images/reset.png" /> </a>
+								</div></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+	<table id="test"></table>
+</body>
+</html>

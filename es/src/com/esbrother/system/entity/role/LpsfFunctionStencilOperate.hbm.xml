@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.esbrother.system.entity.role.LpsfFunctionStencilOperate" table="lpsf_function_stencil_operate">
+<id column="id" name="id" type="string">
+<generator class="uuid.hex"/>
+</id>
+<property column="operate_id" length="32" name="operateId" type="string"/>
+<property column="stencil_id" length="32" name="stencilId" type="string"/>
+</class>
+</hibernate-mapping>

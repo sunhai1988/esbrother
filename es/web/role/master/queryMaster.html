@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>模块列表</title>
+<link rel="stylesheet" type="text/css"
+	href="../../themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../css/ui-lightness/jquery-ui-1.8.11.custom.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../css/search_client.css" />
+<script type="text/javascript" src="../../js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../../lhgdialog/lhgdialog.min.js"></script>
+<script type="text/javascript" src="../../js/oaUtil.js"></script>
+<script type="text/javascript" src="../../js/tool.js"></script>
+<script type="text/javascript" src="../../js/dcdiv.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var toolbar = [
+				{
+					id : 'btnadd',
+					text : '添加',
+					iconCls : 'icon-add',
+					url : 'role/master/addMaster.html',
+					handler : function() {
+						add('添加模块', '520', '860', 'role/master/addMaster.html');
+					}
+				},
+				'-',
+				{
+					id : 'btnedit',
+					text : '修改',
+					iconCls : 'icon-update',
+					url : 'role/master/updateMaster.html',
+					handler : function() {
+						update_tree('test', '修改模块', '520', '860',
+								'role/master/updateMaster.html');
+					}
+				},
+				'-',
+				{
+					id : 'btnok',
+					text : '详细',
+					iconCls : 'icon-detail',
+					url : 'role/master/detailMaster.html',
+					handler : function() {
+						update_tree('test', '模块详细信息', '520', '860',
+								'role/master/detailMaster.html');
+					}
+				},
+				'-',
+				{
+					id : 'btnremove',
+					text : '删除',
+					iconCls : 'icon-del',
+					url : 'deleteMaster.action',
+					handler : function() {
+						deleterow_tree('test', 'deleteMaster.action');
+					}
+				},
+				'-',
+				{
+					id : 'btnsave',
+					text : '查看结构树',
+					iconCls : 'icon-query',
+					url : 'role/master/queryMasterTree.html',
+					handler : function() {
+						add('查看结构树', '600', '860',
+								'role/master/queryMasterTree.html');
+					}
+				}, '-', {
+					id : 'btnreload',
+					text : '全部',
+					iconCls : 'icon-all',
+					handler : function() {
+						searchUser_client_all_tree('test', 'queryForm');
+					}
+				} ];
+		$('#test')
+				.treegrid(
+						{
+							title : '模块菜单管理',
+							iconCls : 'icon-save',
+							rownumbers : true,
+							animate : true,
+							collapsible : true,
+							fitColumns : true,
+							url : 'queryMaster.action',
+							idField : 'root_id',
+							treeField : 'masterplate_name',
+							pageList : [ 10, 20, 30, 40, 50 ],
+							showFooter : true,
+							pagination : true,
+							fitColumns : true,
+							singleSelect : false,
+							frozenColumns : [ [ {
+								field : 'ck',
+								checkbox : true
+							} ] ],
+							columns : [ [
+									{
+										field : 'id',
+										title : 'id',
+										width : 0
+									},
+									{
+										field : 'masterplate_name',
+										title : '模板名称',
+										width : 160
+									},
+									{
+										field : 'root_id',
+										title : '模板编号',
+										width : 60
+									},
+									{
+										field : 'icon',
+										title : '图标',
+										width : 60,
+										formatter : function(value) {
+											if (!value) {
+												return '';
+											} else {
+												return formatString(
+														'<span class="{0}" style="display:inline-block;vertical-align:middle;width:16px;height:16px;"></span>',
+														value);
+											}
+										}
+									}, {
+										field : 'introduction',
+										title : '简称',
+										width : 80
+									}, {
+										field : 'isSystemMaterplate',
+										title : '是否是系统模板',
+										width : 100,
+										formatter : function(value, rec) {
+											return (value == 1 ? '否' : '是');
+										}
+									}, {
+										field : 'limitDeclare',
+										title : '权限说明',
+										width : 120
+									}, {
+										field : 'firstMasterplate',
+										title : '模板首页',
+										width : 120
+									}, {
+										field : 'sort',
+										title : '排序次数',
+										width : 60
+									}, {
+										field : 'fatherMasterplateCode',
+										title : '父模板编号',
+										width : 120
+									}, {
+										field : 'pageURL',
+										title : '页面路径',
+										width : fillsize(0.2),
+										align : 'center'
+									} ] ],
+							pagination : true,
+							rownumbers : true,
+							toolbar : toolbar
+						});
+		displayMsg('test');
+		$('#test').datagrid('hideColumn', 'id');
+		removeToolbarItemListbt("#test", toolbar);
+	});
+
+	function hh(ss) {
+		alert('fdsfsdfds');
+	}
+</script>
+</head>
+
+<body>
+	<input type="hidden" id="czid" />
+	<div class="bg">
+		<div class="bg_l">
+			<div class="bg_r">
+				<form id="queryForm" style="margin: 0;">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td valign="top" style="padding: 5px 18px;">
+								<div class="i_xun">
+									<div class="i_xun_text">模板名称 ：</div>
+									<input type="text" name="masterName" />
+								</div>
+								<div class="chaxun">
+									<a
+										href="javascript:searchUser_client_tree('test','queryForm');"><img
+										src="../../images/chaxun.png" /> </a>
+								</div>
+								<div class="chaxun">
+									<a href="javascript:reset_client();"><img
+										src="../../images/reset.png" /> </a>
+								</div></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+	<table id="test"></table>
+</body>
+</html>

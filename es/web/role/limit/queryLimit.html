@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>权限管理</title>
+<link rel="stylesheet" type="text/css"
+	href="../../themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../css/ui-lightness/jquery-ui-1.8.11.custom.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../css/search_client.css" />
+<script type="text/javascript" src="../../js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../../lhgdialog/lhgdialog.min.js"></script>
+<script type="text/javascript" src="../../js/oaUtil.js"></script>
+<script type="text/javascript" src="../../js/tool.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var toolbar = [
+				{
+					id : 'btnadd',
+					text : '添加',
+					iconCls : 'icon-add',
+					url : 'role/limit/addLimit.html',
+					handler : function() {
+						add('添加权限', '380', '650', 'role/limit/addLimit.html');
+					}
+				},
+				'-',
+				{
+					id : 'btncut',
+					text : '修改',
+					iconCls : 'icon-update',
+					url : 'role/limit/updateLimit.html',
+					handler : function() {
+						update('test', '修改权限', '380', '650',
+								'role/limit/updateLimit.html');
+					}
+				},
+				'-',
+				{
+					id : 'btnsave',
+					text : '详细',
+					iconCls : 'icon-detail',
+					url : 'role/limit/xxiLimitmess.html',
+					handler : function() {
+						update('test', '权限详细信息', '380', '650',
+								'role/limit/xxiLimitmess.html');
+					}
+				},
+				'-',
+				{
+					id : 'btnsave',
+					text : '功能模板菜单',
+					iconCls : 'icon-yhz',
+					url : 'role/limit/updateLimitMenu.html',
+					handler : function() {
+						update('test', '功能模板菜单', '550', '520',
+								'role/limit/updateLimitMenu.html');
+					}
+				}, '-', {
+					id : 'btnsave',
+					text : '删除',
+					iconCls : 'icon-del',
+					url : 'deleteLimit.action',
+					handler : function() {
+						deleterow('test', 'deleteLimit.action');
+					}
+				}, '-', {
+					id : 'btnsave',
+					text : '全部',
+					iconCls : 'icon-all',
+					handler : function() {
+						searchUser_client_all('test', 'queryForm');
+					}
+				} ];
+		$('#test').datagrid({
+			title : '权限管理',
+			iconCls : 'icon-save',
+			nowrap : false,
+			striped : false,
+			collapsible : true,
+			url : 'queryLimit.action',
+			sortName : 'id',
+			queryParams : {},
+			sortOrder : 'desc',
+			remoteSort : false,
+			pageList : [ 30, 40, 50, 60, 70 ],
+			idField : 'id',
+			frozenColumns : [ [ {
+				field : 'ck',
+				checkbox : true
+			} ] ],
+			columns : [ [ {
+				field : 'id',
+				title : 'id',
+				width : 0
+			}, {
+				field : 'limitWay',
+				title : '权限方式',
+				width : fillsize(0.3)
+			}, {
+				field : 'limitDeclare',
+				title : '权限说明',
+				width : fillsize(0.3)
+			}, {
+				field : 'limitRemark',
+				title : '备注',
+				width : fillsize(0.32)
+			} ] ],
+			pagination : true,
+			rownumbers : true,
+			toolbar : toolbar
+		});
+		displayMsg('test');
+		$('#test').datagrid('hideColumn', 'id');
+		removeToolbarItemListbt("#test", toolbar);
+	});
+
+	function hh(ss) {
+		alert('fdsfsdfds');
+	}
+</script>
+</head>
+
+<body>
+	<input type="hidden" id="czid" />
+	<div class="bg">
+		<div class="bg_l">
+			<div class="bg_r">
+				<form id="queryForm" style="margin: 0;">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td valign="top" style="padding: 5px 18px;">
+								<div class="i_xun">
+									<div class="i_xun_text">权限方式：</div>
+									<input type="text" name="limitWay" />
+								</div>
+								<div class="i_xun">
+									<div class="i_xun_text">权限说明：</div>
+									<input type="text" name="limitDeclare" />
+								</div>
+								<div class="i_xun">
+									<div class="i_xun_text">备注：</div>
+									<input type="text" name="limitRemark" />
+								</div>
+								<div class="chaxun">
+									<a href="javascript:searchUser_client('test','queryForm');"><img
+										src="../../images/chaxun.png" /> </a>
+								</div>
+								<div class="chaxun">
+									<a href="javascript:reset_client();"><img
+										src="../../images/reset.png" /> </a>
+								</div></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+	<table id="test"></table>
+</body>
+</html>

@@ -1,0 +1,160 @@
+body {
+	padding: 0px;
+	margin: 0;
+	overflow: hidden;
+}
+
+.l-link {
+	display: block;
+	height: 26px;
+	line-height: 26px;
+	padding-left: 10px;
+	text-decoration: underline;
+	color: #333;
+}
+
+.l-link2 {
+	text-decoration: underline;
+	color: white;
+}
+
+.l-layout-top {
+	background: #102A49;
+	color: White;
+}
+
+.l-layout-bottom {
+	background: #E5EDEF;
+	text-align: center;
+}
+
+#pageloading {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	height: 700px;
+	z-index: 99999;
+}
+
+.l-link {
+	display: block;
+	line-height: 22px;
+	height: 22px;
+	padding-left: 20px;
+	border: 1px solid white;
+	margin: 4px;
+}
+
+.l-link-over {
+	background: #FFEEAC;
+	border: 1px solid #DB9F00;
+}
+
+#test ul {
+	font-size: 12px;
+	text-decoration: none;
+	line-height: 25px;
+}
+
+#test li {
+	float: right;
+	padding-left: 3px;
+}
+
+#test a:link {
+	color: #FF0000;
+	text-decoration: none;
+	background-color: #CCCCCC;
+}
+
+#test a:visited {
+	color: #FFFFFF;
+}
+
+#test a:hover {
+	color: #FFFF00;
+	text-decoration: none;
+	background-color: #666666;
+}
+
+#test a {
+	text-align: center;
+	display: block;
+}
+
+img {
+	border: 0;
+}
+
+.flo1 {
+	float: left;
+}
+
+.flo2 {
+	float: right;
+}
+
+.baise {
+	color: #FFF;
+}
+
+.baise a:link,.baise a:visited {
+	color: #FFF;
+	text-decoration: none;
+}
+
+.baise a:hover {
+	color: #FFF;
+	text-decoration: none;
+}
+
+.header {
+	background: url(../images/header_bg.jpg) repeat-x;
+	height: 48px;
+	width: 100%;
+}
+
+.header1 {
+	width: 100%;
+	height: 48px;
+	background: url() left no-repeat;
+}
+
+.right {
+	width: 435px;
+	float: right;
+	padding-top: 32px;
+	height: 16px;
+	background: url(../images/logout.png) bottom right no-repeat;
+}
+
+.name {
+	padding-left: 80px;
+	letter-spacing: 1px;
+}
+
+.logout {
+	letter-spacing: 9px;
+	padding-right: 9px;
+}
+
+.footer_right {
+	padding: 5px 10px;
+	text-align: right;
+}
+
+.footer_left {
+	padding: 5px 10px;
+	text-align: left;
+}
+
+#apDiv1 {
+	position: absolute;
+	width: 92px;
+	height: 34px;
+	z-index: 1;
+	right:10%;
+	padding-top:15px;
+}

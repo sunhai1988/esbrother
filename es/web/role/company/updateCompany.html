@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css"
+	href="../../themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../css/ui-lightness/jquery.ui.theme.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../css/lpsf_form_css.css" />
+<script type="text/javascript" src="../../js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../../lhgdialog/lhgcore.min.js"></script>
+<script type="text/javascript" src="../../lhgdialog/lhgdialog.min.js"></script>
+<script type="text/javascript" src="../../js/oaUtil.js"></script>
+<script src="../../js/vali/formValidator-4.1.1.js"
+	type="text/javascript" charset="UTF-8"></script>
+<script src="../../js/vali/formValidatorRegex.js" type="text/javascript"
+	charset="UTF-8"></script>
+<script type="text/javascript">
+	var DG = frameElement.lhgDG;
+	J(function() {
+		$.formValidator.initConfig({
+			onError : function(msg, obj, errorlist) {
+			},
+			submitAfterAjaxPrompt : '有数据正在异步验证，请稍等...',
+			onShowClass : "",
+			onFocusClass : "",
+			onCorrectClass : ""
+		});
+
+		$("#companyName").formValidator({
+			onShow : "请输入公司名称",
+			onFocus : "至少1个长度",
+			onCorrect : "输入合法"
+		}).inputValidator({
+			min : 1,
+			empty : {
+				leftEmpty : false,
+				rightEmpty : false,
+				emptyError : "两边不能有空符号"
+			},
+			onError : "不能为空,请确认"
+		});
+		$("#chargeer").formValidator({
+			onShow : "请输入公司名称",
+			onFocus : "至少1个长度",
+			onCorrect : "输入合法"
+		}).inputValidator({
+			min : 1,
+			empty : {
+				leftEmpty : false,
+				rightEmpty : false,
+				emptyError : "两边不能有空符号"
+			},
+			onError : "不能为空,请确认"
+		});
+		$("#phone").formValidator({
+			onShow : "请输入电话号码",
+			onFocus : "电话号码的长度必须是11位",
+			onCorrect : "输入合法"
+		}).inputValidator({
+			min : 11,
+			max : 11,
+			onError : "电话号码必须为11位,请确认"
+		}).regexValidator({
+			regExp : "mobile",
+			dataType : "enum",
+			onError : "电话号码格式不正确"
+		});
+		
+		$("#zip").formValidator({
+			onShow : "请输入邮政编码",
+			onFocus : "邮政编码的长度必须是6位",
+			onCorrect : "输入合法"
+		}).inputValidator({
+			min : 6,
+			max : 6,
+			onError : "邮政编码必须为6位,请确认"
+		}).regexValidator({
+			regExp : "zipcode",
+			dataType : "enum",
+			onError : "邮政编码格式不正确"
+		});
+		DG.addBtn('ok', '确定', add);
+		queryByIdone('queryByIdCompany.action');
+	});
+	function add() {
+		if ($.formValidator.pageIsValid("1")) {
+			$.post("addCompany.action", $("#userForm").serializeArray(),
+					function(data) {
+						DG.curWin.location.reload();
+					});
+			DG.curWin.location.reload();
+		}
+	}
+</script>
+</head>
+
+<body>
+	<form id="userForm" name="validateForm1" method="post"
+		style="margin: 10; text-align: center;">
+		<table border="0" cellpadding="0" cellspacing="1" width="98%">
+			<input type="hidden" jsn="id" name="co.id" />
+			<tr>
+				<td width="80">公司名称</td>
+				<td><input type="text" id="companyName" jsn="companyName"
+					name="co.companyName"></input></td>
+				<td><div id="companyNameTip" style="width: 280px"></div></td>
+			</tr>
+			<tr>
+				<td>负责人姓名</td>
+				<td><input type="text" id="chargeer" jsn="chargeer"
+					name="co.chargeer"></input></td>
+				<td><div id="chargeerTip" style="width: 280px"></div></td>
+			</tr>
+			<tr>
+				<td>公司类别</td>
+				<td><select id="type" type="text" jsn="type" name="co.type">
+						<option value="冶金">冶金</option>
+						<option value="化工">化工</option>
+						<option value="楼宇">楼宇</option>
+						<option value="钢铁">钢铁</option>
+				</select>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>电话</td>
+				<td><input type="text"  id="phone" jsn="phone" name="co.phone"></input>
+				</td>
+				<td><div id="phoneTip" style="width: 280px"></div></td>
+			</tr>
+			<tr>
+				<td>邮编</td>
+				<td><input type="text" id="zip" jsn="zip" name="co.zip"></input></td>
+				<td><div id="zipTip" style="width: 280px"></div></td>
+			</tr>
+			<tr>
+				<td>单位地址</td>
+				<td colspan="2"><input type="text" jsn="companyAddress"
+					name="co.companyAddress" size="80"></input>
+				</td>
+			</tr>
+			<tr>
+				<td>通讯地址</td>
+				<td colspan="2"><input type="text" jsn="commAddress"
+					name="co.commAddress" size="80"></input>
+				</td>
+			</tr>
+			<tr>
+				<td>备注</td>
+				<td colspan="2"><textarea jsn="remarks" name="co.remarks"
+						style="width: 95%;" rows="6"></textarea>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- ========================= 数据源 ========================= -->
+	<!-- 本地数据源 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<!-- 本地 -->
+		<property name="url">
+			<value>jdbc:mysql://42.121.55.146:3306/esbrother?useUnicode=true&amp;characterEncoding=utf8</value>
+		</property>
+		<property name="username">
+			<value>root</value>
+		</property>
+		<property name="password">
+			<value>sunhaiBJ2013</value>
+		</property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation">
+			<value>classpath:hibernate.cfg.xml</value>
+		</property>
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+
+		<property name="lobHandler">
+			<ref bean="defaultLobHandler" />
+		</property>
+		<property name="mappingDirectoryLocations">
+			<list>
+				<!--资源集合 -->
+				<value>classpath:com/esbrother</value>
+			</list>
+		</property>
+	</bean>
+	<!-- Hibernate事务管理器 -->
+	<!-- <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager"> -->
+	<!-- <property name="sessionFactory"> -->
+	<!-- <ref local="sessionFactory"/> -->
+	<!-- </property> -->
+	<!-- </bean> -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="transactionInterceptor"
+		class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager" ref="transactionManager" />
+		<!-- 配置事务属性 -->
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<list>
+				<value>*Dao</value>
+			</list>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptor</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 事务属性定义 -->
+	<!-- <bean name="transactionAttributes" -->
+	<!-- class="org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource"> -->
+	<!-- <property name="properties"> -->
+	<!-- <props> -->
+	<!-- <prop key="save*">PROPAGATION_REQUIRED</prop> -->
+	<!-- <prop key="delete*">PROPAGATION_REQUIRED</prop> -->
+	<!-- <prop key="*">PROPAGATION_REQUIRED</prop> -->
+	<!-- </props> -->
+	<!-- </property> -->
+	<!-- </bean> -->
+	<!-- 事务截听器 -->
+	<!-- <bean id="nameMatchTxInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor"> -->
+	<!-- <property name="transactionManager"> -->
+	<!-- <ref bean="transactionManager"/> -->
+	<!-- </property> -->
+	<!-- <property name="transactionAttributeSource"> -->
+	<!-- <ref bean="transactionAttributes"/> -->
+	<!-- </property> -->
+	<!-- </bean> -->
+	<!--加载JDBCTEMPLATE -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+	</bean>
+
+	<bean id="commonDAO" class="com.esbrother.system.hibernate.CommonDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+	</bean>
+	<bean id="nativeJdbcExtractor"
+		class="org.springframework.jdbc.support.nativejdbc.CommonsDbcpNativeJdbcExtractor" />
+	<bean id="defaultLobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler"
+		lazy-init="true" />
+</beans>

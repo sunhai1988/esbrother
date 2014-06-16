@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.esbrother.system.entity.email.Email" table="send_email">
+<id column="id" name="id" type="string">
+<generator class="uuid.hex"/>
+</id>
+<property column="TO_NAME" length="200" name="to_name" type="string"/>
+<property column="TO_EMAIL" length="200" name="to_email" type="string"/>
+<property column="TO_EMAIL_SP" length="100" name="to_email_sp" type="string"/>
+<property column="FLAG" length="4" name="flag" type="int"/>
+<property name="createtime" type="date">
+       <column name ="CREATETIME" not-null="true" default="getdate()" ></column>
+</property>
+<property column="EMAIL_TYPE" length="4" name="email_type" type="int"/>
+</class>
+</hibernate-mapping>

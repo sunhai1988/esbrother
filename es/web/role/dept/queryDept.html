@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>部门管理</title>
+<link rel="stylesheet" type="text/css"
+	href="../../themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../css/ui-lightness/jquery-ui-1.8.11.custom.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../css/search_client.css" />
+<script type="text/javascript" src="../../js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../../lhgdialog/lhgdialog.min.js"></script>
+<script type="text/javascript" src="../../js/oaUtil.js"></script>
+<script type="text/javascript" src="../../js/tool.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var toolbar = [
+				{
+					id : 'btnadd',
+					text : '添加',
+					iconCls : 'icon-add',
+					url : 'role/dept/addDept.html',
+					handler : function() {
+						add('添加部门', '500', '820', 'role/dept/addDept.html');
+					}
+				},
+				'-',
+				{
+					id : 'btnedit',
+					text : '修改',
+					iconCls : 'icon-update',
+					url : 'role/dept/updateDept.html',
+					handler : function() {
+						update('test', '修改部门', '500', '820',
+								'role/dept/updateDept.html');
+					}
+				},
+				'-',
+				{
+					id : 'btnok',
+					text : '详细',
+					iconCls : 'icon-detail',
+					url : 'role/dept/detailDept.html',
+					handler : function() {
+						update('test', '部门详细信息', '500', '820',
+								'role/dept/detailDept.html');
+					}
+				}, '-', {
+					id : 'btnremove',
+					text : '删除',
+					iconCls : 'icon-del',
+					url : 'deleteDept.action',
+					handler : function() {
+						deleterow('test', 'deleteDept.action');
+					}
+				}, '-', {
+					id : 'btnreload',
+					text : '全部',
+					iconCls : 'icon-all',
+					handler : function() {
+						searchUser_client_all('test', 'queryForm');
+					}
+				} ];
+		$('#test').datagrid({
+			title : '部门管理',
+			iconCls : 'icon-save',
+			nowrap : false,
+			striped : false,
+			collapsible : true,
+			url : 'queryDept.action',
+			sortName : 'id',
+			queryParams : {},
+			sortOrder : 'desc',
+			remoteSort : false,
+			pageList : [ 30, 40, 50, 60, 70 ],
+			idField : 'id',
+			frozenColumns : [ [ {
+				field : 'ck',
+				checkbox : true
+			} ] ],
+			columns : [ [ {
+				field : 'id',
+				title : 'id',
+				width : 0
+			}, {
+				field : 'dept_name',
+				title : '部门名称',
+				width : fillsize(0.2)
+			}, {
+				field : 'company_name',
+				title : '公司名称',
+				width : fillsize(0.2)
+			}, {
+				field : 'dept_des',
+				title : '部门说明',
+				width : fillsize(0.3)
+			} ] ],
+			pagination : true,
+			rownumbers : true,
+			toolbar : toolbar
+		});
+		displayMsg('test');
+		$('#test').datagrid('hideColumn', 'id');
+		removeToolbarItemListbt("#test", toolbar);
+	});
+
+	function hh(ss) {
+		alert('fdsfsdfds');
+	}
+</script>
+</head>
+
+<body>
+	<input type="hidden" id="czid" />
+	<div class="bg">
+		<div class="bg_l">
+			<div class="bg_r">
+				<form id="queryForm" style="margin: 0;">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td valign="top" style="padding: 5px 18px;">
+								<div class="i_xun">
+									<div class="i_xun_text">部门：</div>
+									<input type="text" name="deptName" />
+								</div>
+								<div class="i_xun">
+									<div class="i_xun_text">部门说明：</div>
+									<input type="text" name="deptDes" />
+								</div>
+								<div class="chaxun">
+									<a href="javascript:searchUser_client('test','queryForm');"><img
+										src="../../images/chaxun.png" /> </a>
+								</div>
+								<div class="chaxun">
+									<a href="javascript:reset_client();"><img
+										src="../../images/reset.png" /> </a>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+	<table id="test"></table>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.esbrother.system.entity.role.LpsfDepartment" table="lpsf_department">
+<id column="id" name="id" type="string">
+<generator class="uuid.hex"/>
+</id>
+<property column="company_id" length="32" name="companyId" type="string"/>
+<property column="dept_name" length="64" name="deptName" type="string"/>
+<property column="dept_des" length="500" name="deptDes" type="string"/>
+<property column="remarks" length="500" name="remarks" type="string"/>
+</class>
+</hibernate-mapping>

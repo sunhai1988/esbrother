@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="companyDao" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.esbrother.system.dao.role.LpsfCompanyDaoImpl">
+				<property name="commonDAO" ref="commonDAO" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="lpsfDeptDao" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.esbrother.system.dao.role.LpsfDeptDaoImpl">
+				<property name="commonDAO" ref="commonDAO" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="uusersDao" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.esbrother.system.dao.role.UUsersDaoImpl">
+				<property name="commonDAO" ref="commonDAO" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="lpsfUserRoleDao" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.esbrother.system.dao.role.UserRoleDaoImpl">
+				<property name="commonDAO" ref="commonDAO" />
+			</bean>
+		</property>
+	</bean>
+
+
+	<bean id="lpsfLimitDao" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.esbrother.system.dao.role.LpsfLimitDaoImpl">
+				<property name="commonDAO" ref="commonDAO" />
+			</bean>
+		</property>
+	</bean>
+
+
+	<bean id="usersgroupDao" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.esbrother.system.dao.role.UsersGroupDaoImpl">
+				<property name="commonDAO" ref="commonDAO" />
+			</bean>
+		</property>
+	</bean>
+	<bean id="lpsfRoleDao" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.esbrother.system.dao.role.LpsfRoleDaoImpl">
+				<property name="commonDAO" ref="commonDAO" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="lpsfMasterDao" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.esbrother.system.dao.role.LpsfMasterDaoImpl">
+				<property name="commonDAO" ref="commonDAO" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="positionDao" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.esbrother.system.dao.role.LpsfPositionDaoImpl">
+				<property name="commonDAO" ref="commonDAO" />
+			</bean>
+		</property>
+	</bean>
+
+</beans>

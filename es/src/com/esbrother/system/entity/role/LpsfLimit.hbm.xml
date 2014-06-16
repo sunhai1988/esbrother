@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.esbrother.system.entity.role.LpsfLimit" table="lpsf_limit">
+<id column="id" name="id" type="string">
+<generator class="uuid.hex"/>
+</id>
+<property column="limitWay" length="120" name="limitWay" type="string"/>
+<property column="limitDeclare" length="200" name="limitDeclare" type="string"/>
+<property column="limitRemark" length="500" name="limitRemark" type="string"/>
+</class>
+</hibernate-mapping>

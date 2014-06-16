@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>信息管理系统</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<link href="lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet"
+	type="text/css" />
+<link href="css/lpsf_main.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery-1.6.4.js" type="text/javascript"></script>
+<script src="lib/ligerUI/js/plugins/ligerDrag.js" type="text/javascript"></script>
+<script src="lib/ligerUI/js/plugins/ligerResizable.js"
+	type="text/javascript"></script>
+<script src="lib/ligerUI/js/plugins/ligerMenu.js" type="text/javascript"></script>
+<script src="lib/ligerUI/js/plugins/ligerLayout.js"
+	type="text/javascript"></script>
+<script src="lib/ligerUI/js/plugins/ligerTab.js" type="text/javascript"></script>
+<script src="lib/ligerUI/js/plugins/ligerAccordion.js"
+	type="text/javascript"></script>
+<script src="lib/ligerUI/js/plugins/ligerTree.js" type="text/javascript"></script>
+<script type="text/javascript" src="lhgdialog/lhgdialog.min.js"></script>
+<script type="text/javascript" src="js/oaUtil.js"></script>
+<script type="text/javascript" src="js/getCookies.js"></script>
+<script type="text/javascript">
+	$(function() {
+		getTime();
+	});
+	$.post("denglu.action", function(date) {
+		$("#uname").html("用户名:" + date.msg);
+	}, "json");
+	var tab = null;
+	var accordion = null;
+	var tree = null;
+	$(function() {
+		//布局
+		$("#layout1").ligerLayout({
+			leftWidth : 190,
+			height : '100%',
+			onHeightChanged : f_heightChanged
+		});
+		var height = $(".l-layout-center").height();
+		//Tab
+		$("#framecenter").ligerTab({
+			height : height
+		});
+		//面板
+		$("#accordion1").ligerAccordion({
+			height : height - 24,
+			speed : null
+		});
+		$(".l-link").hover(function() {
+			$(this).addClass("l-link-over");
+		}, function() {
+			$(this).removeClass("l-link-over");
+		});
+
+		//树
+		$("#tree1").ligerTree({
+			checkbox : false,
+			nodeWidth : 120,
+			url : 'userIdqueryMenu.action',
+			attribute : [ 'nodename', 'url', 'isexpand' ],
+			onSelect : function(node) {
+				if (node.data.isLeaf == true) {
+					if (!node.data.url)
+						return;
+					var tabid = $(node.target).attr("tabid");
+					if (!tabid) {
+						tabid = new Date().getTime();
+						$(node.target).attr("tabid", tabid)
+					}
+					f_addTab(tabid, node.data.text, node.data.url);
+				}
+			},
+			onSuccess : function() {
+				var manager = $("#tree1").ligerGetTreeManager();
+				manager.collapseAll();
+			}
+		});
+		tab = $("#framecenter").ligerGetTabManager();
+		accordion = $("#accordion1").ligerGetAccordionManager();
+		tree = $("#tree1").ligerGetTreeManager();
+		$("#pageloading").hide();
+	});
+
+	function f_heightChanged(options) {
+		if (tab)
+			tab.addHeight(options.diff);
+		if (accordion && options.middleHeight - 24 > 0)
+			accordion.setHeight(options.middleHeight - 24);
+	}
+	function f_addTab(tabid, text, url) {
+		tab.addTabItem({
+			tabid : tabid,
+			text : text,
+			url : url
+		});
+	}
+	function logout() {
+		if (confirm("你确定要退出系统吗？")) {
+			deleteCookie("usrid", "/");
+			deleteCookie("pass", "/");
+			$.post("logout.action", callback, "json");
+		}
+
+	}
+	function updatepass() {
+		add('修改密码', '280', '600', 'update.html');
+	}
+	function callback(json) {
+		window.location.reload();
+	}
+</script>
+</head>
+<body style="padding: 0px;">
+	<div id="pageloading"></div>
+	<div id="layout1" style="width: 100%;">
+		<div position="top" style="background: #666666; color: White;">
+			<div class="header">
+				<div class="header1">
+					<div class="right">
+						<div class="name flo1 baise">
+							系统时间：<a id="datetime"></a> <a href="javascript:updatepass();">修改密码</a>
+							<a href="javascript:logout()">退出</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div position="left" title="主要菜单" id="accordion1">
+			<div title="功能列表" class="l-scroll">
+				<ul id="tree1" style="margin-top: 3px;">
+
+				</ul>
+			</div>
+		</div>
+		<div position="center" id="framecenter">
+			<div tabid="home" title="我的主页" style="height: 300px">
+				<iframe frameborder="0" id="iframeid" name="home"></iframe>
+			</div>
+		</div>
+		<div position="bottom">
+			<div style="width: 100%; line-height: 20px;">
+				<div class="flo1 footer_left">
+					<ul>
+						<li><a id="uname"></a>
+						</li>
+						<li></li>
+					</ul>
+				</div>
+				<div class="flo2 footer_right">
+					技术支持：今日财富资产管理股份有限公司&nbsp;&nbsp;&nbsp;&nbsp;联系电话：4007-333-888
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+		</div>
+	</div>
+	<div style="display: none">
+		<!-- 流量统计代码 -->
+	</div>
+</body>
+</html>

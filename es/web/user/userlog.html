@@ -1,0 +1,115 @@
+<!--用户信息-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>用户日志</title>
+<link rel="stylesheet" type="text/css"	href="../themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+<link rel="stylesheet" type="text/css"	href="../css/ui-lightness/jquery-ui-1.8.11.custom.css" />
+<link rel="stylesheet" type="text/css"
+	href="../css/search_client.css" />
+<script type="text/javascript" src="../js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../lhgdialog/lhgdialog.min.js"></script>
+<script type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="../js/oaUtil.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$('#test')
+				.datagrid(
+						{
+							title : '用户日志',
+							iconCls : 'icon-save',
+							nowrap : false,
+							striped : false,
+							collapsible : true,
+							url : 'queryUserLog.action',
+							sortName : 'log_date',
+							queryParams : {},
+							sortOrder : 'desc',
+							remoteSort : false,
+							pageList : [ 30, 40, 50, 60, 70 ],
+							idField : 'id',
+							frozenColumns : [ [ {
+								field : 'ck',
+								checkbox : true
+							}
+							] ],
+							columns : [ [
+									{
+										field : 'id',
+										title : 'id',
+										width : 0
+									},
+									{
+										field : 'user_name',
+										title : '用户名',
+										width : 180
+									},
+									{
+										field : 'log_date',
+										title : '日期',
+										width : 400
+									},
+									{
+										field : 'message',
+										title : '操作',
+										width : 400
+									}
+									] ],
+							pagination : true,
+							rownumbers : true,
+							toolbar : [
+									{
+										id : 'btnsave',
+										text : '全部',
+										iconCls : 'icon-all',
+										handler : function() {
+											searchUser_client_all('test','queryForm');
+										}
+									}]
+						});
+		displayMsg('test');
+		$('#test').datagrid('hideColumn', 'id');
+	});
+</script>
+</head>
+
+<body>
+	<input type="hidden" id="czid" />
+	<div class="bg">
+		<div class="bg_l">
+			<div class="bg_r">
+				<form id="queryForm" style="margin: 0;">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td valign="top" style="padding: 5px 18px;">
+								<div class="i_xun_time">
+									<div class="i_xun_text_time">开始时间：</div>
+									 <input id="stime" name="stime" type="text" class="Wdate"
+										onFocus="WdatePicker({startDate:'%y-%M',dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+								</div>
+								<div class="i_xun_time">
+									<div class="i_xun_text_time">结束时间：</div>
+									<input id="etime" name="etime" type="text" class="Wdate"
+										onFocus="WdatePicker({startDate:'%y-%M',dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+								</div>
+								<div class="chaxun">
+									<a href="javascript:timecheck();"><img
+										src="../images/chaxun.png" /> </a>
+								</div>
+								<div class="chaxun">
+									<a href="javascript:reset_client();"><img
+										src="../images/reset.png" /> </a>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+	<table id="test"></table>
+</body>
+</html>

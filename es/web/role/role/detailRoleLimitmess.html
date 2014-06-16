@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css"
+	href="../../themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../css/ui-lightness/jquery.ui.theme.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../css/lpsf_form_css.css" />
+<script type="text/javascript" src="../../js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../../lhgdialog/lhgcore.min.js"></script>
+<script type="text/javascript" src="../../lhgdialog/lhgdialog.min.js"></script>
+<script type="text/javascript" src="../../js/oaUtil.js"></script>
+<script type="text/javascript">
+	var DG = frameElement.lhgDG;
+	J(function() {
+		checkListwo('RolequeryByIdLimit.action', 'id', 'limitWay', 'uu_name');
+	});
+	function checkListwo(actionName, value_one, value_two, lable_id) {
+		var ids = J('#czid', DG.curDoc).val();
+		$.getJSON(actionName + "?id=" + ids, function(data) {
+			setHtmlqx(data,value_one, value_two, lable_id);
+		});
+	}
+	function setHtmlqx(data,value_one, value_two, lable_id) {
+		var html = '';
+		var fhtml = '';
+		var down_id = '';
+		$.each(data,function(idx, item) {
+			if (item['limit_id'] != null) {
+				html += '<span><input type="checkbox" name="checkone" value="'+item[value_one]+'" checked>'+ item[value_two] + '</input></span>';
+			} 
+		});
+		fhtml += html;
+		$("#" + lable_id + "").html(fhtml);
+	}
+</script>
+<style type="text/css">
+.black span {
+	display: -moz-inline-box;
+	display: inline-block;
+	color: #A22E00;
+}
+</style>
+</head>
+
+<body>
+	<form id="userForm" method="post"
+		style="margin: 10; text-align: center;">
+		<table border="0" cellpadding="0" cellspacing="1" width="98%">
+			<tr>
+				<td height="32"><strong>权限</strong>
+				</td>
+			</tr>
+			<tr>
+				<td class="black">
+					<div id="uu_name"></div>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

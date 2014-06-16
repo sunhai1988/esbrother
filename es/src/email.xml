@@ -1,0 +1,10 @@
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+	<package name="email" extends="helloWord">
+		<!-- company Action -->
+		<action name="queryEmail" class="com.esbrother.system.action.email.EmailAction"
+			method="queryEmail">
+		</action>
+	</package>
+
+</struts>
